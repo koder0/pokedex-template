@@ -17,11 +17,12 @@ const Health = ({ health }: HealthProps) => {
         return emptyHeart;
     }
   return (<div className="health">
-    {calcHeart(0)}
+    {/*{calcHeart(0)}
     {calcHeart(1)}
     {calcHeart(2)}
     {calcHeart(3)}
-    {calcHeart(4)}
+    {calcHeart(4)}*/}
+    {[...Array(5)].map((_, idx) => calcHeart(idx))}
     </div>)
 }
 
