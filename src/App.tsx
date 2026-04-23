@@ -1,3 +1,4 @@
+import Health from "./components/Health"
 import PokeBall from "./components/PokeBall"
 import { usePokemonContext } from "./context/PokeContextProvider"
 
@@ -12,7 +13,7 @@ const App = () => {
     </nav>
       <img src={selectedPokemon.image} alt={selectedPokemon.name} className="pokePic" />
       
-      {/* TODO: ide jön a Health komponens */}
+      <Health health={selectedPokemon.health} />
 
       <div className="pokeType">
         {selectedPokemon.types.map(type => (
