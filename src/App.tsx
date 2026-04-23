@@ -1,7 +1,8 @@
+import PokeBall from "./components/PokeBall"
 import { usePokemonContext } from "./context/PokeContextProvider"
 
 const App = () => {
-  const {selectedPokemon, nextPokemon, prevPokemon} = usePokemonContext()
+  const {selectedPokemon, nextPokemon, prevPokemon, pokemonsData} = usePokemonContext()
   return (
     <main>
     <nav>
@@ -21,7 +22,8 @@ const App = () => {
         ))}
     </div>
     <div className="pokeBallWrapper">
-      {/* TODO: itt kell mappelni a PokeBall-okat*/}
+     
+      {pokemonsData.map((pokemon, idx) => <PokeBall pokemon={pokemon} key={idx} />)}
     </div>
     </main>
   )

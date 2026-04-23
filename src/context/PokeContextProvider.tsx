@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, type ReactNode } from "react"
+import { createContext, useContext, useEffect, useState, type ReactNode } from "react"
 import type { PokemonType } from "../types/PokeType"
 
 type PokemonContextType = {
@@ -36,6 +36,17 @@ const PokeContextProvider = ({ children }: { children: ReactNode }) => {
 
     // TODO: itt kell a json-ból olvasni
 
+    useEffect(()=>{
+        fetch("pokemons.json")
+            .then(response => response.json())
+            .then(data => {
+                setPokemonsData(data)
+                if(data.length > 0) {
+                    setSelectedPokemon(data[0])
+                }
+            })
+    },[])
+    
     const nextPokemon = () => {
         const currentIndex = pokemonsData?.findIndex(pokemon => pokemon.name === selectedPokemon.name) ?? 0
         const nextIndex = (currentIndex + 1) % (pokemonsData?.length ?? 1)
